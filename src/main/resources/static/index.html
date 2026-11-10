@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarTogether</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-container">
+        <h2>Car<span>Together</span></h2>
+
+        <nav>
+            <a href="#search">Search Rides</a>
+            <a href="#bookings">My Bookings</a>
+        </nav>
+
+        <select id="tenantSelect">
+            <option value="demo-vilnius-key">Vilnius Group</option>
+            <option value="demo-kaunas-key">Kaunas Group</option>
+        </select>
+    </div>
+</header>
+
+<section class="hero" id="search">
+    <div class="hero-content">
+        <h1>Find a Ride</h1>
+        <p>Share trips, save money, and travel together.</p>
+
+        <form id="searchForm" class="search-form">
+
+            <div class="form-group">
+                <label for="departureCity">From</label>
+                <input type="text" id="departureCity"
+                       value="Vilnius" required>
+            </div>
+
+            <div class="form-group">
+                <label for="arrivalCity">To</label>
+                <input type="text" id="arrivalCity"
+                       value="Kaunas" required>
+            </div>
+
+            <div class="form-group">
+                <label for="departureTime">Departure Date & Time</label>
+                <input type="datetime-local"
+                       id="departureTime" required>
+            </div>
+
+            <button type="submit" id="searchButton">
+                Search Rides
+            </button>
+        </form>
+    </div>
+</section>
+
+<main class="container">
+
+    <section class="results-section">
+
+        <div class="section-title">
+            <h2>Available Rides</h2>
+            <span id="resultsCount">0 found</span>
+        </div>
+
+        <div id="message"></div>
+
+        <div id="tripResults">
+            <p class="empty-message">
+                Search for a ride to see available trips.
+            </p>
+        </div>
+
+    </section>
+
+    <section class="bookings-section" id="bookings">
+
+        <div class="section-title">
+            <h2>My Bookings</h2>
+            <button type="button" id="refreshBookings">
+                Refresh
+            </button>
+        </div>
+
+        <div id="bookingResults">
+            <p class="empty-message">
+                No bookings to display.
+            </p>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 CarTogether</p>
+</footer>
+
+<script src="/script.js"></script>
+</body>
+</html>

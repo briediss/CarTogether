@@ -17,4 +17,8 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
     @Modifying(flushAutomatically = true, clearAutomatically = true)
     @Query("UPDATE Trip t SET t.availableSeats = t.availableSeats - 1 " + "WHERE t.id = :tripId AND t.tenantId = :tenantId AND t.availableSeats > 0")
     int reserveSeat(@Param("tripId") Long tripId, @Param("tenantId") Long tenantId);
+
+    @Modifying(flushAutomatically = true, clearAutomatically = true)
+    @Query("UPDATE Trip t SET t.availableSeats = t.availableSeats + 1 " + "WHERE t.id = :tripId AND t.tenantId = :tenantId " + "AND t.availableSeats < t.totalSeats")
+    int returnSeat(@Param("tripId") Long tripId, @Param("tenantId") Long tenantId);
 }
