@@ -1,6 +1,7 @@
 package lt.cartogether.service;
 
 import jakarta.transaction.Transactional;
+import lt.cartogether.exception.TripNotFoundException;
 import lt.cartogether.model.Trip;
 import lt.cartogether.repository.TripRepository;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class BookingService {
             throw new IllegalArgumentException("Missing booking parameters");
         }
 
-        Trip trip = tripRepository.findByIdAndTenantId(tripId, tenantId).orElseThrow(() -> new IllegalArgumentException("Trip not found"));
+        Trip trip = tripRepository.findByIdAndTenantId(tripId, tenantId).orElseThrow(() -> new TripNotFoundException("Trip not found"));
 
         int updatedRows = tripRepository.reserveSeat(tripId, tenantId);
 
@@ -29,6 +30,6 @@ public class BookingService {
             throw new IllegalStateException("No available seats");
         }
 
-        return tripRepository.findByIdAndTenantId(tripId, tenantId).orElseThrow(() -> new IllegalArgumentException("Trip not found"));
+        return tripRepository.findByIdAndTenantId(tripId, tenantId).orElseThrow(() -> new TripNotFoundException("Trip not found"));
     }
 }

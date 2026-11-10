@@ -2,12 +2,10 @@ package lt.cartogether.controller;
 
 import lt.cartogether.dto.TripResponse;
 import lt.cartogether.model.Trip;
+import lt.cartogether.service.TenantService;
 import lt.cartogether.service.TripMatchingService;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,18 +15,22 @@ import java.util.List;
 public class TripController {
 
     private final TripMatchingService tripMatchingService;
+    private final TenantService tenantService;
 
-    public TripController(TripMatchingService tripMatchingService) {
+    public TripController(TripMatchingService tripMatchingService, TenantService tenantService) {
         this.tripMatchingService = tripMatchingService;
+        this.tenantService = tenantService;
     }
 
     @GetMapping("/search")
     public List<TripResponse> searchTrips(
-        @RequestParam Long tenantId,
-        @RequestParam String departureCity,
-        @RequestParam String arrivalCity,
-        @RequestParam
+        @RequestHeader("X-API-Key") String apiKey,
+        @RequestParam("departureCity") String departureCity,
+        @RequestParam("arrivalCity") String arrivalCity,
+        @RequestParam("departureTime")
         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime departureTime) {
+
+        Long tenantId = tenantService.getTenantId(apiKey);
 
         List<Trip> trips = tripMatchingService.searchTrips(tenantId, departureCity, arrivalCity, departureTime);
         return trips.stream().map(trip -> new TripResponse(
