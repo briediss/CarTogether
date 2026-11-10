@@ -1,5 +1,6 @@
 package lt.cartogether.controller;
 
+import lt.cartogether.dto.TripResponse;
 import lt.cartogether.model.Trip;
 import lt.cartogether.service.TripMatchingService;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,13 +23,24 @@ public class TripController {
     }
 
     @GetMapping("/search")
-    public List<Trip> searchTrips(
+    public List<TripResponse> searchTrips(
         @RequestParam Long tenantId,
         @RequestParam String departureCity,
         @RequestParam String arrivalCity,
         @RequestParam
         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime departureTime) {
-            return tripMatchingService.searchTrips(tenantId, departureCity, arrivalCity, departureTime);
+
+        List<Trip> trips = tripMatchingService.searchTrips(tenantId, departureCity, arrivalCity, departureTime);
+        return trips.stream().map(trip -> new TripResponse(
+            trip.getId(),
+            trip.getDriverName(),
+            trip.getDepartureCity(),
+            trip.getArrivalCity(),
+            trip.getDepartureTime(),
+            trip.getAvailableSeats(),
+            trip.getDriverRating(),
+            tripMatchingService.calculatePrice(trip)
+        )).toList();
     }
 }
 
