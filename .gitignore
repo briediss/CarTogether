@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# H2 duomeų bazė
+/data/
+*.db
+*.mv.db
+*.trace.db
