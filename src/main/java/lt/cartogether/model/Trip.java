@@ -28,6 +28,7 @@ public class Trip {
     private double fuelConsumption;
     private double fuelPrice;
     private double driverRating;
+    private Integer detourMinutes;
 
     public Trip() {
     }

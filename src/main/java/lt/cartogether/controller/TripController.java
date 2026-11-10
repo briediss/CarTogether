@@ -39,7 +39,8 @@ public class TripController {
             trip.getDepartureTime(),
             trip.getAvailableSeats(),
             trip.getDriverRating(),
-            tripMatchingService.calculatePrice(trip)
+            tripMatchingService.calculatePrice(trip),
+            trip.getDetourMinutes()
         )).toList();
     }
 }

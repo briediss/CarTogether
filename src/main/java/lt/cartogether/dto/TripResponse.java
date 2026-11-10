@@ -17,8 +17,9 @@ public class TripResponse {
     private int availableSeats;
     private double driverRating;
     private double pricePerPerson;
+    private Integer detourMinutes;
 
-    public TripResponse(Long id, String driverName, String departureCity, String arrivalCity, LocalDateTime departureTime, int availableSeats, double driverRating, double pricePerPerson) {
+    public TripResponse(Long id, String driverName, String departureCity, String arrivalCity, LocalDateTime departureTime, int availableSeats, double driverRating, double pricePerPerson, Integer detourMinutes) {
         this.id = id;
         this.driverName = driverName;
         this.departureCity = departureCity;
@@ -27,5 +28,6 @@ public class TripResponse {
         this.availableSeats = availableSeats;
         this.driverRating = driverRating;
         this.pricePerPerson = pricePerPerson;
+        this.detourMinutes = detourMinutes;
     }
 }

@@ -37,8 +37,11 @@ public class TripMatchingService {
                 .filter(trip -> trip.getArrivalCity().equalsIgnoreCase(arrivalCity))
                 .filter(trip -> trip.getAvailableSeats() > 0)
                 .filter(trip -> trip.getDriverRating() >= 3.0)
+                .filter(trip -> trip.getDetourMinutes() != null && trip.getDetourMinutes() <= 15)
                 .filter(trip -> isTimeSuitable(trip.getDepartureTime(), departureTime))
-                .sorted(Comparator.comparing(trip -> Math.abs(Duration.between(departureTime, trip.getDepartureTime()).toMinutes())))
+                .sorted(Comparator.comparingLong((Trip trip) -> Math.abs(Duration.between(departureTime, trip.getDepartureTime()).toSeconds()))
+                .thenComparingInt(trip -> trip.getDetourMinutes())
+                .thenComparingDouble(trip -> calculatePrice(trip)))
                 .toList();
     }
 

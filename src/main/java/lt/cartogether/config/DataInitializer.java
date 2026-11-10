@@ -39,6 +39,7 @@ public class DataInitializer implements CommandLineRunner {
         trip1.setFuelConsumption(6);
         trip1.setFuelPrice(2.3);
         trip1.setDriverRating(4.8);
+        trip1.setDetourMinutes(5);
 
         Trip trip2 = new Trip();
         trip2.setTenantId(1L);
@@ -52,6 +53,7 @@ public class DataInitializer implements CommandLineRunner {
         trip2.setFuelConsumption(7);
         trip2.setFuelPrice(2.3);
         trip2.setDriverRating(4.5);
+        trip2.setDetourMinutes(10);
 
         Trip trip3 = new Trip();
         trip3.setTenantId(2L);
@@ -65,6 +67,7 @@ public class DataInitializer implements CommandLineRunner {
         trip3.setFuelConsumption(6.5);
         trip3.setFuelPrice(2.3);
         trip3.setDriverRating(4.9);
+        trip3.setDetourMinutes(20);
 
         Trip trip4 = new Trip();
         trip4.setTenantId(2L);
@@ -78,6 +81,7 @@ public class DataInitializer implements CommandLineRunner {
         trip4.setFuelConsumption(7);
         trip4.setFuelPrice(2.3);
         trip4.setDriverRating(4.2);
+        trip4.setDetourMinutes(0);
 
         tripRepository.save(trip1);
         tripRepository.save(trip2);
