@@ -34,6 +34,7 @@ public class DataInitializer implements CommandLineRunner {
         trip1.setArrivalCity("Kaunas");
         trip1.setDepartureTime(departureTime);
         trip1.setAvailableSeats(3);
+        trip1.setTotalSeats(3);
         trip1.setDistanceKm(100);
         trip1.setFuelConsumption(6);
         trip1.setFuelPrice(2.3);
@@ -46,6 +47,7 @@ public class DataInitializer implements CommandLineRunner {
         trip2.setArrivalCity("Kaunas");
         trip2.setDepartureTime(departureTime.plusMinutes(20));
         trip2.setAvailableSeats(2);
+        trip2.setTotalSeats(2);
         trip2.setDistanceKm(100);
         trip2.setFuelConsumption(7);
         trip2.setFuelPrice(2.3);
@@ -58,6 +60,7 @@ public class DataInitializer implements CommandLineRunner {
         trip3.setArrivalCity("Vilnius");
         trip3.setDepartureTime(departureTime);
         trip3.setAvailableSeats(3);
+        trip3.setTotalSeats(3);
         trip3.setDistanceKm(100);
         trip3.setFuelConsumption(6.5);
         trip3.setFuelPrice(2.3);
@@ -70,6 +73,7 @@ public class DataInitializer implements CommandLineRunner {
         trip4.setArrivalCity("Klaipėda");
         trip4.setDepartureTime(departureTime.plusHours(2));
         trip4.setAvailableSeats(1);
+        trip4.setTotalSeats(1);
         trip4.setDistanceKm(300);
         trip4.setFuelConsumption(7);
         trip4.setFuelPrice(2.3);

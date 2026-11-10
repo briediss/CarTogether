@@ -23,6 +23,7 @@ public class Trip {
     private String arrivalCity;
     private LocalDateTime departureTime;
     private int availableSeats;
+    private int totalSeats;
     private double distanceKm;
     private double fuelConsumption;
     private double fuelPrice;
