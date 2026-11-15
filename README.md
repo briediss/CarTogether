@@ -75,7 +75,7 @@ Pradiniai kelionių duomenys sukuriami automatiškai pirmą kartą paleidus prog
 | Edvinas | Kaunas Group | Kaunas → Vilnius |
 | Klemensas | Kaunas Group | Vilnius → Klaipėda |
 
-Kelionių laikai nustatomi pagal pirmojo paleidimo datą.
+Kelionės sukuriamos dienai po pirmojo paleidimo su tuščia duomenų baze. Vėliau jų datos nesikeičia, todėl, jei duomenų bazė jau buvo naudota, paieškoje reikia pasirinkti išsaugotą kelionės datą. Ją galima patikrinti H2 konsolėje lentelės `TRIP` stulpelyje `DEPARTURE_TIME`.
 
 Duomenys saugomi H2 duomenų bazėje, todėl pakartotinai paleidus programą jau egzistuojantys įrašai išlieka.
 
@@ -83,7 +83,7 @@ Duomenys saugomi H2 duomenų bazėje, todėl pakartotinai paleidus programą jau
 
 1. Paleisti programą ir atidaryti `http://localhost:8080`.
 2. Pasirinkti „Vilnius Group“.
-3. Ieškoti kelionės iš Vilniaus į Kauną, naudojant demonstracinės kelionės išvykimo datą.
+3. Ieškoti kelionės **Vilnius → Kaunas**. Jei programa ką tik pirmą kartą paleista su tuščia H2 duomenų baze, paieškoje pasirinkti **rytojaus datą ir 15:10**. Tito kelionė išvyksta 15:00, o Luko - 15:20, todėl abi patenka į ±30 min. paieškos intervalą.
 4. Peržiūrėti rastas keliones, kainas ir laisvas vietas.
 5. Paspausti „Reserve“ ir rezervuoti vietą.
 6. Skiltyje „My Bookings“ patikrinti sukurtą rezervaciją.
